@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->integer('steam_appid');
+            $table->integer('steam_appid')->unique();
             $table->string('name');
             $table->float('price');
             $table->float('steam_price');
-            $table->string('developer');
+            $table->string('developers');
             $table->date('release_date');
             $table->string('type');
             $table->integer('stock');
