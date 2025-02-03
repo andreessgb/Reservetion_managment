@@ -28,4 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+use Illuminate\Support\Facades\Redis;
+
+Route::get('/leer-redis', function () {
+    return response()->json([
+        'message' => Redis::get('message')
+    ]);
+});
+
 require __DIR__.'/auth.php';
