@@ -1,11 +1,14 @@
+# Usar imagen oficial de Python
 FROM python:3.9
 
-WORKDIR /app
+# Establecer directorio de trabajo en /python
+WORKDIR /python
 
-COPY requirements.txt requirements.txt
+# Instalar Redis-py
+RUN pip install redis
+RUN pip install httpx
+# Copiar el archivo worker.py
+COPY ./python/worker.py /app/
 
-RUN pip install -r requirements.txt
-
-COPY . .
-
+# Definir el comando que ejecutará el worker
 CMD ["python", "worker.py"]
