@@ -52,7 +52,7 @@ services:
       - mysql_db
     networks:
       - backend
-    command: php artisan serve --host=0.0.0.0 --port=8000
+    command: bash -c "php artisan serve --host=0.0.0.0 --port=8000 && npm run dev"
 
   # Servicio Python Worker
   python_worker:
