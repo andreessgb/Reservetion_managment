@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->id();
-            $table->id('code');
+            $table->id();  // La columna `id` es la clave primaria y es auto-incremental
+            $table->unsignedBigInteger('code');  // Eliminamos el `AUTO_INCREMENT` aquí
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('game_id');
             $table->float('total_cost');
             $table->date('purchase_date');
 
+            // Definición de claves foráneas
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -27,9 +28,9 @@ return new class extends Migration
             $table->foreign('game_id')
                 ->references('id')
                 ->on('games')
-            ->onDelete('cascade');
+                ->onDelete('cascade');
 
-            
+            // Timestamps
             $table->timestamps();
         });
     }
