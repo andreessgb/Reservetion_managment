@@ -70,6 +70,18 @@ services:
       - mysql_db
     command: python worker.py
 
+  # Servicio Adminer (Gestor de base de datos)
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql_db
+    networks:
+      - backend
+
 # Volúmenes para persistir datos
 volumes:
   redis_data:
@@ -79,3 +91,4 @@ volumes:
 networks:
   backend:
     driver: bridge
+
