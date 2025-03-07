@@ -57,7 +57,7 @@ services:
   # Servicio Python Worker
   python_worker:
     build:
-      context: .
+      context: . 
       dockerfile: python/Dockerfile
     container_name: python_worker
     volumes:
@@ -91,4 +91,3 @@ volumes:
 networks:
   backend:
     driver: bridge
-

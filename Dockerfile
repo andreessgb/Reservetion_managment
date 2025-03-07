@@ -1,5 +1,5 @@
-# Usar la imagen oficial de PHP con FPM y extensiones necesarias
-FROM php:8.1-fpm
+# Usar la imagen oficial de PHP con FPM y PHP 8.2
+FROM php:8.2-fpm
 
 # Instalar dependencias del sistema y herramientas necesarias
 RUN apt-get update && apt-get install -y \
@@ -46,9 +46,6 @@ COPY . .
 
 # Instalar dependencias de Laravel
 RUN composer install --no-interaction --optimize-autoloader
-
-# Copiar archivo de configuración Nginx (si es necesario)
-#COPY nginx/default.conf /etc/nginx/sites-available/default
 
 # Exponer el puerto 8000 (o el puerto que Laravel esté utilizando)
 EXPOSE 8000
